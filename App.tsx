@@ -1,28 +1,19 @@
 import React from 'react'
-import { useColorScheme } from 'react-native'
-import {
-  DarkTheme,
-  DefaultTheme,
-  NavigationContainer,
-} from '@react-navigation/native'
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
-import TodayScreens from './src/screens/tab-today'
-import SevenDaysScreen from './src/screens/tab-seven-days'
-import SettingsScreen from './src/screens/tab-settings'
+import { Provider } from 'react-redux'
+import { PersistGate } from 'redux-persist/integration/react'
 
-const Tab = createBottomTabNavigator()
+import store from './src/store'
+
+import Routes from './src/routes'
+import { persistor } from './src/store/persistor'
 
 const App = () => {
-  const isDarkMode = useColorScheme() === 'dark'
-
   return (
-    <NavigationContainer theme={isDarkMode ? DarkTheme : DefaultTheme}>
-      <Tab.Navigator>
-        <Tab.Screen name="Today" component={TodayScreens} />
-        <Tab.Screen name="7 Days" component={SevenDaysScreen} />
-        <Tab.Screen name="Settings" component={SettingsScreen} />
-      </Tab.Navigator>
-    </NavigationContainer>
+    <Provider store={store}>
+      <PersistGate persistor={persistor}>
+        <Routes />
+      </PersistGate>
+    </Provider>
   )
 }
 
