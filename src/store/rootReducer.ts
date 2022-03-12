@@ -3,6 +3,8 @@ import { persistReducer } from 'redux-persist'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import autoMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2'
 
+import store from '../store'
+
 import weatherReducer from './weather/reducer'
 import settingsReducer from './settings/reducer'
 
@@ -19,5 +21,6 @@ const rootReducer: Reducer = combineReducers({
 })
 
 export type RootState = ReturnType<typeof rootReducer>
+export type AppDispatch = typeof store.dispatch
 
 export default persistReducer(rootPersistConfig, rootReducer)

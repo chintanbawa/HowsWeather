@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from 'react'
 import { StyleProp, Text, View, ViewStyle } from 'react-native'
-import { useTheme } from '@react-navigation/native'
-import { useSelector, useDispatch } from 'react-redux'
+import { useTheme } from 'react-native-paper'
 import DropDownPicker, { ValueType } from 'react-native-dropdown-picker'
 
 import { RootState } from '../../store/rootReducer'
-import { setColorScheme } from '../../store/settings/actions'
+import { Creators as settingsActions } from '../../store/settings/actions'
+import { useAppDispatch, useAppSelector } from '../../hooks'
 
 const SettingsScreen = () => {
-  const colorScheme = useSelector(
+  const colorScheme = useAppSelector(
     (state: RootState) => state.settings.colorScheme,
   )
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
 
   const { colors } = useTheme()
 
@@ -29,7 +29,7 @@ const SettingsScreen = () => {
 
   useEffect(() => {
     if (value !== null) {
-      dispatch(setColorScheme(value.toString()))
+      dispatch(settingsActions.setColorScheme(value.toString()))
     }
   }, [value, dispatch])
 
@@ -42,12 +42,12 @@ const SettingsScreen = () => {
         <DropDownPicker
           style={{
             borderColor: colors.text,
-            backgroundColor: colors.card,
+            backgroundColor: colors.surface,
             height: 35,
           }}
           textStyle={{ color: colors.text }}
           containerStyle={{ flex: 1 }}
-          dropDownContainerStyle={{ backgroundColor: colors.card }}
+          dropDownContainerStyle={{ backgroundColor: colors.surface }}
           tickIconStyle={{ tintColor: colors.text } as StyleProp<ViewStyle>}
           arrowIconStyle={{ tintColor: colors.text } as StyleProp<ViewStyle>}
           open={open}

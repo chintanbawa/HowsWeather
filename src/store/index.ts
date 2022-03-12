@@ -5,12 +5,16 @@ import logger from 'redux-logger'
 import pRootReducer from './rootReducer'
 import rootSaga from './rootSaga'
 import { persistStoreDevice } from './persistor'
+import TokenAccessMiddleware from '../services/TokenAccessMiddleware'
 
 // Create the saga middleware
 const sagaMiddleware = createSagaMiddleware()
 
 // Mount it on the Store
-const store = createStore(pRootReducer, applyMiddleware(sagaMiddleware, logger))
+const store = createStore(
+  pRootReducer,
+  applyMiddleware(sagaMiddleware, logger, TokenAccessMiddleware),
+)
 
 persistStoreDevice(store)
 
