@@ -19,6 +19,7 @@ const AppNavigationContainer = withTheme(({ theme }) => {
   return (
     <NavigationContainer theme={theme as ThemeType}>
       <Tab.Navigator
+        initialRouteName="Today"
         screenOptions={({ route }) => ({
           headerStyle: { backgroundColor: colors.primary },
           headerTitleStyle: { color: 'white' },
@@ -37,7 +38,11 @@ const AppNavigationContainer = withTheme(({ theme }) => {
             return <MaterialIcons name={iconName} size={size} color={color} />
           },
         })}>
-        <Tab.Screen name="Today" component={TodayScreens} />
+        <Tab.Screen
+          name="Today"
+          component={TodayScreens}
+          options={{ headerTitle: "Today's Weather" }}
+        />
         <Tab.Screen name="Cities" component={CitiesScreen} />
         <Tab.Screen name="Settings" component={SettingsScreen} />
       </Tab.Navigator>

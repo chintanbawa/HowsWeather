@@ -1,16 +1,24 @@
 import React, { useEffect, useState } from 'react'
-import { StyleProp, Text, View, ViewStyle } from 'react-native'
-import { useTheme } from 'react-native-paper'
+import {
+  StyleProp,
+  Text,
+  View,
+  ViewStyle,
+  TouchableOpacity,
+} from 'react-native'
+import { Subheading, useTheme } from 'react-native-paper'
 import DropDownPicker, { ValueType } from 'react-native-dropdown-picker'
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 
-import { RootState } from '../../store/rootReducer'
 import { Creators as settingsActions } from '../../store/settings/actions'
 import { useAppDispatch, useAppSelector } from '../../hooks'
 
 const SettingsScreen = () => {
-  const colorScheme = useAppSelector(
-    (state: RootState) => state.settings.colorScheme,
+  const colorScheme = useAppSelector(state => state.settings.colorScheme)
+  const measurementUnit = useAppSelector(
+    state => state.settings.measurementUnit,
   )
+
   const dispatch = useAppDispatch()
 
   const { colors } = useTheme()
@@ -57,6 +65,57 @@ const SettingsScreen = () => {
           setValue={setValue}
           setItems={setItems}
         />
+      </View>
+
+      <View style={{ marginTop: 20 }}>
+        <Subheading style={{ color: colors.text }}>
+          Measurement Unit:
+        </Subheading>
+
+        <View
+          style={{
+            flexDirection: 'row',
+            elevation: 0,
+            justifyContent: 'space-between',
+            paddingHorizontal: 20,
+            marginTop: 10,
+          }}>
+          {['Metric', 'Imperial'].map((unit, index) => {
+            const isSelected = measurementUnit === unit
+            return (
+              <TouchableOpacity
+                key={unit + index}
+                onPress={() =>
+                  dispatch(settingsActions.setMeasurementUnit(unit.toString()))
+                }>
+                <View
+                  style={{
+                    backgroundColor: isSelected ? colors.primary : '#0000',
+                    paddingHorizontal: 30,
+                    height: 40,
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                    borderRadius: 40,
+                    borderColor: isSelected ? '#0000' : colors.primary,
+                    borderWidth: isSelected ? 0 : 1.5,
+                  }}>
+                  {isSelected && (
+                    <MaterialIcons name="check" size={25} color="white" />
+                  )}
+                  <Text
+                    style={{
+                      fontSize: 15,
+                      fontWeight: 'bold',
+                      color: isSelected ? 'white' : colors.primary,
+                      marginLeft: 5,
+                    }}>
+                    {unit}
+                  </Text>
+                </View>
+              </TouchableOpacity>
+            )
+          })}
+        </View>
       </View>
     </View>
   )

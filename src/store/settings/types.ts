@@ -1,11 +1,8 @@
-import { GET_COLOR_SCHEME, SET_COLOR_SCHEME } from './actionTypes'
+import { SET_COLOR_SCHEME, SET_MEASUREMENT_UNIT } from './actionTypes'
 
 export interface SettingsState {
   colorScheme: string
-}
-
-export type GetColorScheme = {
-  type: typeof GET_COLOR_SCHEME
+  measurementUnit: string
 }
 
 export type SetColorScheme = {
@@ -13,4 +10,9 @@ export type SetColorScheme = {
   payload: string
 }
 
-export type SettingsActions = GetColorScheme | SetColorScheme
+export type setMeasurementUnit = {
+  type: typeof SET_MEASUREMENT_UNIT
+  payload: string
+}
+
+export type SettingsActions = SetColorScheme | setMeasurementUnit
