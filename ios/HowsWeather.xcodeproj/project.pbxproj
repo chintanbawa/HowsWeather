@@ -14,6 +14,7 @@
 		6172F2D35A4C3AA820D92908 /* libPods-HowsWeather.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6423831EA8574132BED9D8CC /* libPods-HowsWeather.a */; };
 		7EF68E3733C33B6898317E18 /* libPods-HowsWeather-HowsWeatherTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ABFE59519B596E51CEFDCCC0 /* libPods-HowsWeather-HowsWeatherTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		FC4E262427DDBBBF009EB827 /* MaterialIconsOutlined.otf in Resources */ = {isa = PBXBuildFile; fileRef = FC4E262327DDBBBF009EB827 /* MaterialIconsOutlined.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,8 @@
 		C0A881CF5CF3F2B244570E2A /* Pods-HowsWeather.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HowsWeather.debug.xcconfig"; path = "Target Support Files/Pods-HowsWeather/Pods-HowsWeather.debug.xcconfig"; sourceTree = "<group>"; };
 		D00AAFFCFCFDA5787532823F /* Pods-HowsWeather.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HowsWeather.release.xcconfig"; path = "Target Support Files/Pods-HowsWeather/Pods-HowsWeather.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		FC4E262127DDB6EE009EB827 /* MaterialIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = MaterialIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
+		FC4E262327DDBBBF009EB827 /* MaterialIconsOutlined.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MaterialIconsOutlined.otf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +89,7 @@
 		13B07FAE1A68108700A75B9A /* HowsWeather */ = {
 			isa = PBXGroup;
 			children = (
+				FC4E262027DDB6CB009EB827 /* Fonts */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
@@ -145,8 +149,16 @@
 				6C97AB639B58BBB4B15BBE30 /* Pods-HowsWeather-HowsWeatherTests.debug.xcconfig */,
 				1D0AE47A65C8663E3B452821 /* Pods-HowsWeather-HowsWeatherTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		FC4E262027DDB6CB009EB827 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				FC4E262327DDBBBF009EB827 /* MaterialIconsOutlined.otf */,
+				FC4E262127DDB6EE009EB827 /* MaterialIcons.ttf */,
+			);
+			name = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -245,6 +257,7 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				FC4E262427DDBBBF009EB827 /* MaterialIconsOutlined.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

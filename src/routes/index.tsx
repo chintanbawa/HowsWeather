@@ -1,17 +1,16 @@
-import React, { useCallback, useMemo } from 'react'
+import React, { useMemo } from 'react'
 import { useColorScheme } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native'
 import { Provider as PaperProvider, withTheme } from 'react-native-paper'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
-import { useSelector } from 'react-redux'
-
-import { RootState } from '../store/rootReducer'
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 
 import TodayScreens from '../screens/tab-today'
-import SevenDaysScreen from '../screens/tab-seven-days'
+import CitiesScreen from '../screens/tab-cities'
 import SettingsScreen from '../screens/tab-settings'
 
 import { ThemeType, getTheme } from '../theme'
+import { useAppSelector } from '../hooks'
 
 const Tab = createBottomTabNavigator()
 
@@ -20,12 +19,26 @@ const AppNavigationContainer = withTheme(({ theme }) => {
   return (
     <NavigationContainer theme={theme as ThemeType}>
       <Tab.Navigator
-        screenOptions={{
+        screenOptions={({ route }) => ({
           headerStyle: { backgroundColor: colors.primary },
           headerTitleStyle: { color: 'white' },
-        }}>
+          tabBarIcon: ({ color, size }) => {
+            let iconName: string = ''
+
+            if (route.name === 'Today') {
+              iconName = 'cloud'
+            } else if (route.name === 'Cities') {
+              iconName = 'apartment'
+            } else if (route.name === 'Settings') {
+              iconName = 'settings'
+            }
+
+            // You can return any component that you like here!
+            return <MaterialIcons name={iconName} size={size} color={color} />
+          },
+        })}>
         <Tab.Screen name="Today" component={TodayScreens} />
-        <Tab.Screen name="7 Days" component={SevenDaysScreen} />
+        <Tab.Screen name="Cities" component={CitiesScreen} />
         <Tab.Screen name="Settings" component={SettingsScreen} />
       </Tab.Navigator>
     </NavigationContainer>
@@ -33,9 +46,7 @@ const AppNavigationContainer = withTheme(({ theme }) => {
 })
 
 const Routes = () => {
-  const colorScheme = useSelector(
-    (state: RootState) => state.settings.colorScheme,
-  )
+  const colorScheme = useAppSelector(state => state.settings.colorScheme)
   // get system default color scheme
   const systemColorScheme = useColorScheme()
 
