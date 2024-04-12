@@ -347,7 +347,7 @@ PODS:
     - React-Core
   - RNLocalize (2.2.0):
     - React-Core
-  - RNReanimated (2.2.4):
+  - RNReanimated (2.17.0):
     - DoubleConversion
     - FBLazyVector
     - FBReactNativeSpec
@@ -355,7 +355,6 @@ PODS:
     - RCT-Folly
     - RCTRequired
     - RCTTypeSafety
-    - React
     - React-callinvoker
     - React-Core
     - React-Core/DevSupport
@@ -373,7 +372,6 @@ PODS:
     - React-RCTNetwork
     - React-RCTSettings
     - React-RCTText
-    - React-RCTVibration
     - ReactCommon/turbomodule/core
     - Yoga
   - RNScreens (3.9.0):
@@ -591,7 +589,7 @@ SPEC CHECKSUMS:
   RNDeviceInfo: a674f06c5a5bd496aebb809cbc3be61cfd612a65
   RNGestureHandler: a479ebd5ed4221a810967000735517df0d2db211
   RNLocalize: 6571ea792a7dcb6d217c98c14d9147e9417cef62
-  RNReanimated: 65583befd5706cc9c86ae9a081786181ced37b93
+  RNReanimated: c13da804217e13f6ee1188fab76d36d74b1488f1
   RNScreens: 4d79118be80f79fa1f4aa131909a1d6e86280af3
   RNVectorIcons: 7923e585eaeb139b9f4531d25a125a1500162a0b
   Yoga: 32a18c0e845e185f4a2a66ec76e1fd1f958f22fa
@@ -599,4 +597,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: eabe8f951cca30e9db4a1b4582b4eea120f2aced
 
-COCOAPODS: 1.11.2
+COCOAPODS: 1.13.0
