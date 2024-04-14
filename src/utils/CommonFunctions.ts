@@ -1,5 +1,4 @@
 import { AxiosError, AxiosRequestConfig, AxiosResponse } from 'axios'
-import { Alert } from 'react-native'
 import { bindActionCreators } from 'redux'
 
 import api from '../services/api'
@@ -81,7 +80,7 @@ export const makeApiCall = async (
       }
 
       if (!ignoreError) {
-        Alert.alert(message)
+        console.log(message)
       }
     }
 

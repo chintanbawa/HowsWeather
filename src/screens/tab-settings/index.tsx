@@ -1,6 +1,6 @@
 import React from 'react'
-import { Text, View, TouchableOpacity } from 'react-native'
-import { Subheading, useTheme } from 'react-native-paper'
+import { Text, View, TouchableOpacity, Platform } from 'react-native'
+import { Subheading, Surface, useTheme } from 'react-native-paper'
 
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 
@@ -29,7 +29,7 @@ const SettingsScreen = () => {
             flexDirection: 'row',
             elevation: 0,
             justifyContent: 'space-between',
-            paddingHorizontal: 20,
+            paddingHorizontal: Platform.OS === 'ios' ? 20 : 8,
             marginTop: 10,
           }}>
           {[
@@ -44,16 +44,16 @@ const SettingsScreen = () => {
                 onPress={() =>
                   dispatch(settingsActions.setColorScheme(value.toString()))
                 }>
-                <View
+                <Surface
                   style={{
-                    backgroundColor: isSelected ? colors.primary : '#0000',
+                    backgroundColor: isSelected ? colors.primary : '#fff',
                     paddingHorizontal: 15,
                     height: chipHeight,
                     flexDirection: 'row',
                     alignItems: 'center',
                     borderRadius: 40,
                     borderColor: isSelected ? '#0000' : colors.primary,
-                    borderWidth: isSelected ? 0 : 1.5,
+                    borderWidth: isSelected ? 0 : 1.2,
                   }}>
                   {isSelected && (
                     <MaterialIcons name="check" size={25} color="white" />
@@ -67,7 +67,7 @@ const SettingsScreen = () => {
                     }}>
                     {label}
                   </Text>
-                </View>
+                </Surface>
               </TouchableOpacity>
             )
           })}
@@ -83,7 +83,7 @@ const SettingsScreen = () => {
             flexDirection: 'row',
             elevation: 0,
             justifyContent: 'space-between',
-            paddingHorizontal: 20,
+            paddingHorizontal: Platform.OS === 'ios' ? 20 : 8,
             marginTop: 10,
           }}>
           {['Metric', 'Imperial'].map((unit, index) => {
@@ -94,16 +94,16 @@ const SettingsScreen = () => {
                 onPress={() =>
                   dispatch(settingsActions.setMeasurementUnit(unit.toString()))
                 }>
-                <View
+                <Surface
                   style={{
-                    backgroundColor: isSelected ? colors.primary : '#0000',
+                    backgroundColor: isSelected ? colors.primary : '#fff',
                     paddingHorizontal: 30,
                     height: chipHeight,
                     flexDirection: 'row',
                     alignItems: 'center',
                     borderRadius: 40,
                     borderColor: isSelected ? '#0000' : colors.primary,
-                    borderWidth: isSelected ? 0 : 1.5,
+                    borderWidth: isSelected ? 0 : 1.2,
                   }}>
                   {isSelected && (
                     <MaterialIcons name="check" size={25} color="white" />
@@ -117,7 +117,7 @@ const SettingsScreen = () => {
                     }}>
                     {unit}
                   </Text>
-                </View>
+                </Surface>
               </TouchableOpacity>
             )
           })}

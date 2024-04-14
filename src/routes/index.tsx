@@ -43,7 +43,7 @@ const AppNavigationContainer = withTheme(({ theme }) => {
           component={TodayScreens}
           options={{ headerTitle: "Today's Weather" }}
         />
-        <Tab.Screen name="Cities" component={CitiesScreen} />
+        {/* <Tab.Screen name="Cities" component={CitiesScreen} /> */}
         <Tab.Screen name="Settings" component={SettingsScreen} />
       </Tab.Navigator>
     </NavigationContainer>
